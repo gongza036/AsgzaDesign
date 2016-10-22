@@ -1,4 +1,4 @@
-package com.app.gongza.asgzdesign.tools.logger;
+package com.app.gongza.asgzdesign.tools.utils;
 
 import android.text.TextUtils;
 import android.util.Log;
