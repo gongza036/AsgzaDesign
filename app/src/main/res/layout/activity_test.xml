@@ -7,9 +7,10 @@
     tools:context="com.app.gongza.asgzdesign.activity.TestActivity">
 
     <TextView
-        android:id="@+id/tv_test"
+        android:id="@+id/tv_metrics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Test" />
+        android:padding="12dp"
+        android:text="test"
+        android:textColor="#aaa" />
 </RelativeLayout>
