@@ -1,4 +1,4 @@
-package com.app.gongza.asgzdesign.base;
+package com.app.gongza.libs.base;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.app.gongza.asgzdesign.tools.utils.L;
+import com.app.gongza.libs.tools.utils.L;
 
 
 public class BaseAcitivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.app.gongza.asgzdesign.tools.utils;
+package com.app.gongza.libs.tools.utils;
 
 
 import android.app.Activity;

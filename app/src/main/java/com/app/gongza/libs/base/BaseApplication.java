@@ -1,4 +1,4 @@
-package com.app.gongza.asgzdesign.base;
+package com.app.gongza.libs.base;
 
 import android.app.Application;
 

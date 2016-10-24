@@ -1,4 +1,4 @@
-package com.app.gongza.asgzdesign.tools.utils;
+package com.app.gongza.libs.tools.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

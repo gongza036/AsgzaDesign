@@ -1,9 +1,9 @@
-package com.app.gongza.asgzdesign.tools.logger.klog;
+package com.app.gongza.libs.tools.logger.klog;
 
 import android.util.Log;
 
-import com.app.gongza.asgzdesign.tools.logger.KLog;
-import com.app.gongza.asgzdesign.tools.logger.Util;
+import com.app.gongza.libs.tools.logger.KLog;
+import com.app.gongza.libs.tools.logger.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;

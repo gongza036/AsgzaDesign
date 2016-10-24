@@ -1,13 +1,13 @@
-package com.app.gongza.asgzdesign.tools.logger;
+package com.app.gongza.libs.tools.logger;
 
 
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
-import com.app.gongza.asgzdesign.tools.logger.klog.BaseLog;
-import com.app.gongza.asgzdesign.tools.logger.klog.FileLog;
-import com.app.gongza.asgzdesign.tools.logger.klog.JsonLog;
-import com.app.gongza.asgzdesign.tools.logger.klog.XmlLog;
+import com.app.gongza.libs.tools.logger.klog.BaseLog;
+import com.app.gongza.libs.tools.logger.klog.FileLog;
+import com.app.gongza.libs.tools.logger.klog.JsonLog;
+import com.app.gongza.libs.tools.logger.klog.XmlLog;
 
 import java.io.File;
 

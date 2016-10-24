@@ -1,8 +1,8 @@
-package com.app.gongza.asgzdesign.tools.logger.klog;
+package com.app.gongza.libs.tools.logger.klog;
 
 import android.util.Log;
 
-import com.app.gongza.asgzdesign.tools.logger.KLog;
+import com.app.gongza.libs.tools.logger.KLog;
 
 
 /**
