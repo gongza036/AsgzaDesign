@@ -1,4 +1,4 @@
-package com.app.gongza.asgzdesign.activity;
+package com.app.gongza.asgzdesign.activities;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;

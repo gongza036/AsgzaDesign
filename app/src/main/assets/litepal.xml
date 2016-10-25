@@ -32,7 +32,7 @@
         </list>
     -->
     <list>
-        <mapping class="com.app.gongza.asgzdesign.models.AsdNews"></mapping>
+        <mapping class="com.app.gongza.asgzdesign.unity.entities.NewEntity"></mapping>
     </list>
 
     <!--

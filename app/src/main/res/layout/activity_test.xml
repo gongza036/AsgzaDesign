@@ -4,7 +4,7 @@
     android:id="@+id/activity_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.app.gongza.asgzdesign.activity.TestActivity">
+    tools:context="com.app.gongza.asgzdesign.activities.TestActivity">
 
     <TextView
         android:id="@+id/tv_metrics"
