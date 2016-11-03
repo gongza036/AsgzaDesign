@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.app.gongza.asgzdesign.activities.TestActivity"></activity>
+        <activity android:name=".activities.TestActivity" ></activity>
+        <activity android:name=".activities.demo.DemoAESActivity" ></activity>
+        <activity android:name=".activities.demo.DemoLitepalActivity"></activity>
     </application>
 
 </manifest>
