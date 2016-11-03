@@ -23,9 +23,9 @@ import com.app.gongza.asgzdesign.R;
 import com.app.gongza.libs.tools.utils.FastBlur;
 
 /**
- * Created by gongza on 2016/11/3.
+ * 高斯模糊背景弹窗口
+ * https://github.com/ddwhan0123/BlurPopupWindow
  */
-
 public class BlurPopWin {
     private RelativeLayout pop_root_layout;
     private CardView pop_layout;
