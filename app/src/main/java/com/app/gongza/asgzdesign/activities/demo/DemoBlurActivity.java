@@ -1,17 +1,16 @@
 package com.app.gongza.asgzdesign.activities.demo;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.app.gongza.asgzdesign.MainActivity;
 import com.app.gongza.asgzdesign.R;
+import com.app.gongza.libs.base.BaseAcitivity;
 import com.app.gongza.libs.tools.widget.BlurPopWin;
 
-public class DemoBlurActivity extends Activity {
+public class DemoBlurActivity extends BaseAcitivity {
     private TextView tv_blur;
 
     @Override

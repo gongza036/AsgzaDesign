@@ -1,12 +1,12 @@
 package com.app.gongza.asgzdesign.activities.demo;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.asgzdesign.unity.entities.NewEntity;
+import com.app.gongza.libs.base.BaseAcitivity;
 
 import org.litepal.crud.DataSupport;
 
@@ -16,7 +16,7 @@ import java.util.List;
  *  LitePal 数据库用法
  *  https://github.com/LitePalFramework/LitePal
  */
-public class DemoLitepalActivity extends Activity {
+public class DemoLitepalActivity extends BaseAcitivity {
     private TextView tv_litepal;
 
     @Override

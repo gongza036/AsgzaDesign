@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.app.gongza.asgzdesign.activities.TestActivity;
+import com.app.gongza.asgzdesign.activities.HomeActivity;
 import com.app.gongza.libs.base.BaseAcitivity;
 
 
@@ -28,7 +28,7 @@ public class MainActivity extends BaseAcitivity {
             @Override
             public void onClick(View v) {
                 showSnackbar("你好MacGit");
-                startActivity(new Intent(MainActivity.this, TestActivity.class));
+                startActivity(new Intent(MainActivity.this, HomeActivity.class));
 
             }
         });

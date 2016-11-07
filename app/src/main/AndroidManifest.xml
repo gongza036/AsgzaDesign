@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.TestActivity" />
-        <activity android:name=".activities.demo.DemoAESActivity" />
-        <activity android:name=".activities.demo.DemoLitepalActivity" />
+        <activity android:name=".activities.HomeActivity"></activity>
+        <activity android:name=".activities.TestActivity"></activity>
+        <activity android:name=".activities.demo.DemoAESActivity"></activity>
+        <activity android:name=".activities.demo.DemoLitepalActivity"></activity>
         <activity android:name=".activities.demo.DemoBlurActivity"></activity>
     </application>
 
