@@ -11,9 +11,10 @@ import com.app.gongza.libs.base.BaseAcitivity;
 import com.app.gongza.libs.tools.utils.Aes;
 
 /**
- *  AES加密
+ * AES加密解密
  */
-public class DemoAESActivity extends BaseAcitivity {
+
+public class DemoEncryptAesActivity extends BaseAcitivity {
     private EditText mInputET;
     private TextView mShowEncryputTV;
     private TextView mShowInputTV;

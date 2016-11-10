@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.asgzdesign.fragments.DemoFragment;
@@ -15,13 +15,14 @@ import com.app.gongza.asgzdesign.fragments.OtherFragment;
 import com.app.gongza.asgzdesign.fragments.UserFragment;
 import com.app.gongza.libs.base.BaseAcitivity;
 
+
 /**
  * Created by gongza on 2016/11/7.
  */
 
 public class HomeActivity extends BaseAcitivity implements View.OnClickListener {
-    private LinearLayout layout_main;
-    private Button bt_home, bt_demo, bt_other, bt_user;
+    private LinearLayout layout_main, layout_home, layout_demo, layout_other, layout_user;
+    private TextView tv_home, tv_demo, tv_other, tv_user;
 
     private FragmentManager fragmentManager;
     private Fragment homeFragment;
@@ -38,14 +39,18 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
 
     private void initView() {
         layout_main = (LinearLayout) findViewById(R.id.layout_main);
-        bt_home = (Button) findViewById(R.id.bt_home);
-        bt_demo = (Button) findViewById(R.id.bt_demo);
-        bt_other = (Button) findViewById(R.id.bt_other);
-        bt_user = (Button) findViewById(R.id.bt_user);
-        bt_home.setOnClickListener(this);
-        bt_demo.setOnClickListener(this);
-        bt_other.setOnClickListener(this);
-        bt_user.setOnClickListener(this);
+        layout_home = (LinearLayout) findViewById(R.id.layout_home);
+        layout_demo = (LinearLayout) findViewById(R.id.layout_demo);
+        layout_other = (LinearLayout) findViewById(R.id.layout_other);
+        layout_user = (LinearLayout) findViewById(R.id.layout_user);
+        layout_home.setOnClickListener(this);
+        layout_demo.setOnClickListener(this);
+        layout_other.setOnClickListener(this);
+        layout_user.setOnClickListener(this);
+        tv_home = (TextView) findViewById(R.id.tv_home);
+        tv_demo = (TextView) findViewById(R.id.tv_demo);
+        tv_other = (TextView) findViewById(R.id.tv_other);
+        tv_user = (TextView) findViewById(R.id.tv_user);
 
         fragmentManager = getSupportFragmentManager();
         setTabSelection(0);
@@ -54,16 +59,16 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.bt_home:
+            case R.id.layout_home:
                 setTabSelection(0);
                 break;
-            case R.id.bt_demo:
+            case R.id.layout_demo:
                 setTabSelection(1);
                 break;
-            case R.id.bt_other:
+            case R.id.layout_other:
                 setTabSelection(2);
                 break;
-            case R.id.bt_user:
+            case R.id.layout_user:
                 setTabSelection(3);
                 break;
 
@@ -78,7 +83,8 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
         hideFragments(transaction);
         switch (index) {
             case 0:
-                bt_home.setTextColor(0xff7f7fbf);
+                layout_home.setBackgroundResource(R.drawable.bg_app_ripple);
+                tv_home.setTextColor(0xffffffff);
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
                     transaction.add(R.id.layout_main, homeFragment);
@@ -87,7 +93,8 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
                 }
                 break;
             case 1:
-                bt_demo.setTextColor(0xff7f7fbf);
+                layout_demo.setBackgroundResource(R.drawable.bg_app_ripple);
+                tv_demo.setTextColor(0xffffffff);
                 if (demoFragment == null) {
                     demoFragment = new DemoFragment();
                     transaction.add(R.id.layout_main, demoFragment);
@@ -96,7 +103,8 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
                 }
                 break;
             case 2:
-                bt_other.setTextColor(0xff7f7fbf);
+                layout_other.setBackgroundResource(R.drawable.bg_app_ripple);
+                tv_other.setTextColor(0xffffffff);
                 if (otherFragment == null) {
                     otherFragment = new OtherFragment();
                     transaction.add(R.id.layout_main, otherFragment);
@@ -105,7 +113,8 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
                 }
                 break;
             case 3:
-                bt_user.setTextColor(0xff7f7fbf);
+                layout_user.setBackgroundResource(R.drawable.bg_app_ripple);
+                tv_user.setTextColor(0xffffffff);
                 if (userFragment == null) {
                     userFragment = new UserFragment();
                     transaction.add(R.id.layout_main, userFragment);
@@ -135,10 +144,14 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
     }
 
     private void resetBtn() {
-        bt_home.setTextColor(0xffffffff);
-        bt_demo.setTextColor(0xffffffff);
-        bt_other.setTextColor(0xffffffff);
-        bt_user.setTextColor(0xffffffff);
+        layout_home.setBackgroundResource(R.drawable.bg_white_ripple);
+        tv_home.setTextColor(0xffaaaaaa);
+        layout_demo.setBackgroundResource(R.drawable.bg_white_ripple);
+        tv_demo.setTextColor(0xffaaaaaa);
+        layout_other.setBackgroundResource(R.drawable.bg_white_ripple);
+        tv_other.setTextColor(0xffaaaaaa);
+        layout_user.setBackgroundResource(R.drawable.bg_white_ripple);
+        tv_user.setTextColor(0xffaaaaaa);
     }
 
 }

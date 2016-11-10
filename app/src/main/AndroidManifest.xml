@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".activities.HomeActivity"></activity>
         <activity android:name=".activities.TestActivity"></activity>
-        <activity android:name=".activities.demo.DemoAESActivity"></activity>
+        <activity android:name=".activities.demo.DemoEncryptAesActivity"></activity>
         <activity android:name=".activities.demo.DemoLitepalActivity"></activity>
         <activity android:name=".activities.demo.DemoBlurActivity"></activity>
     </application>

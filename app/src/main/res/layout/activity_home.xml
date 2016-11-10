@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:gravity="center"
         android:orientation="vertical">
 
 
@@ -19,48 +20,78 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bt_home"
+        <LinearLayout
+            android:id="@+id/layout_home"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/bg_white_ripple"
             android:gravity="center"
-            android:padding="20dp"
-            android:text="@string/home"
-            android:textColor="@android:color/white" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/bt_demo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="@string/demo"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/tv_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/bt_other"
+        <LinearLayout
+            android:id="@+id/layout_demo"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/bg_white_ripple"
             android:gravity="center"
-            android:padding="20dp"
-            android:text="@string/other"
-            android:textColor="@android:color/white" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/bt_user"
+            <TextView
+                android:id="@+id/tv_demo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/demo"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_other"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/bg_white_ripple"
             android:gravity="center"
-            android:padding="20dp"
-            android:text="@string/user_center"
-            android:textColor="@android:color/white" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/other"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_user"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white_ripple"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_center"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>
