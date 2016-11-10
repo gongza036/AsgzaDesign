@@ -22,5 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Litepal_demo" />
+    <Button
+        android:id="@+id/bt_scrollablelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="scrollablelayout_demo" />
 
 </LinearLayout>

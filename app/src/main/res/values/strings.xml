@@ -7,4 +7,5 @@
     <string name="demo">栗子</string>
     <string name="other">其他</string>
     <string name="user_center">我的</string>
+    <string name="title_activity_scrollablelayout">ScrollablelayoutActivity</string>
 </resources>
