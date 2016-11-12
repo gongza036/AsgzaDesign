@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.base.BasePagerFragment;
@@ -19,18 +20,20 @@ public class ParallaxImageHeaderFragment extends BasePagerFragment {
 
     private ScrollableLayout mScrollLayout;
     private ImageView imageHeader;
+    private RelativeLayout rl_head;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_imageheader_scrollablelayout, container, false);
         ViewPager viewPager = (ViewPager) layout.findViewById(R.id.viewpager);
         imageHeader = (ImageView) layout.findViewById(R.id.imageHeader);
+        rl_head= (RelativeLayout) layout.findViewById(R.id.rl_head);
         // ScrollableLayout
         mScrollLayout = (ScrollableLayout) layout.findViewById(R.id.scrollableLayout);
         mScrollLayout.setOnScrollListener(new ScrollableLayout.OnScrollListener() {
             @Override
             public void onScroll(int currentY, int maxY) {
-                ViewHelper.setTranslationY(imageHeader, (float) (currentY * 0.5));
+                ViewHelper.setTranslationY(rl_head, (float) (currentY * 0.5));
             }
         });
         // 扩展点击头部滑动范围
