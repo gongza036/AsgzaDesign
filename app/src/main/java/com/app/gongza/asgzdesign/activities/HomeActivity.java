@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.app.gongza.libs.base.BaseAcitivity;
 public class HomeActivity extends BaseAcitivity implements View.OnClickListener {
     private LinearLayout layout_main, layout_home, layout_demo, layout_other, layout_user;
     private TextView tv_home, tv_demo, tv_other, tv_user;
+    private ImageView iv_home, iv_demo, iv_other, iv_user;
 
     private FragmentManager fragmentManager;
     private Fragment homeFragment;
@@ -47,6 +49,10 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
         layout_demo.setOnClickListener(this);
         layout_other.setOnClickListener(this);
         layout_user.setOnClickListener(this);
+        iv_home = (ImageView) findViewById(R.id.iv_home);
+        iv_demo = (ImageView) findViewById(R.id.iv_demo);
+        iv_other = (ImageView) findViewById(R.id.iv_other);
+        iv_user = (ImageView) findViewById(R.id.iv_user);
         tv_home = (TextView) findViewById(R.id.tv_home);
         tv_demo = (TextView) findViewById(R.id.tv_demo);
         tv_other = (TextView) findViewById(R.id.tv_other);
@@ -83,8 +89,9 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
         hideFragments(transaction);
         switch (index) {
             case 0:
-                layout_home.setBackgroundResource(R.drawable.bg_app_ripple);
-                tv_home.setTextColor(0xffffffff);
+//                layout_home.setBackgroundResource(R.drawable.bg_app_ripple);
+                iv_home.setImageResource(R.drawable.ad_home_icon_on);
+                tv_home.setTextColor(0xffc2195d);
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
                     transaction.add(R.id.layout_main, homeFragment);
@@ -93,8 +100,9 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
                 }
                 break;
             case 1:
-                layout_demo.setBackgroundResource(R.drawable.bg_app_ripple);
-                tv_demo.setTextColor(0xffffffff);
+//                layout_demo.setBackgroundResource(R.drawable.bg_app_ripple);
+                iv_demo.setImageResource(R.drawable.ad_demo_icon_on);
+                tv_demo.setTextColor(0xffc2195d);
                 if (demoFragment == null) {
                     demoFragment = new DemoFragment();
                     transaction.add(R.id.layout_main, demoFragment);
@@ -103,8 +111,9 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
                 }
                 break;
             case 2:
-                layout_other.setBackgroundResource(R.drawable.bg_app_ripple);
-                tv_other.setTextColor(0xffffffff);
+//                layout_other.setBackgroundResource(R.drawable.bg_app_ripple);
+                iv_other.setImageResource(R.drawable.ad_other_icon_on);
+                tv_other.setTextColor(0xffc2195d);
                 if (otherFragment == null) {
                     otherFragment = new OtherFragment();
                     transaction.add(R.id.layout_main, otherFragment);
@@ -113,8 +122,9 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
                 }
                 break;
             case 3:
-                layout_user.setBackgroundResource(R.drawable.bg_app_ripple);
-                tv_user.setTextColor(0xffffffff);
+//                layout_user.setBackgroundResource(R.drawable.bg_app_ripple);
+                iv_user.setImageResource(R.drawable.ad_user_icon_on);
+                tv_user.setTextColor(0xffc2195d);
                 if (userFragment == null) {
                     userFragment = new UserFragment();
                     transaction.add(R.id.layout_main, userFragment);
@@ -144,14 +154,16 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
     }
 
     private void resetBtn() {
-        layout_home.setBackgroundResource(R.drawable.bg_white_ripple);
-        tv_home.setTextColor(0xffaaaaaa);
-        layout_demo.setBackgroundResource(R.drawable.bg_white_ripple);
-        tv_demo.setTextColor(0xffaaaaaa);
-        layout_other.setBackgroundResource(R.drawable.bg_white_ripple);
-        tv_other.setTextColor(0xffaaaaaa);
-        layout_user.setBackgroundResource(R.drawable.bg_white_ripple);
-        tv_user.setTextColor(0xffaaaaaa);
+        iv_home.setImageResource(R.drawable.ad_home_icon);
+        iv_demo.setImageResource(R.drawable.ad_demo_icon);
+        iv_other.setImageResource(R.drawable.ad_other_icon);
+        iv_user.setImageResource(R.drawable.ad_user_icon);
+
+        tv_home.setTextColor(0xff696D71);
+        tv_demo.setTextColor(0xff696D71);
+        tv_other.setTextColor(0xff696D71);
+        tv_user.setTextColor(0xff696D71);
+//        layout_user.setBackgroundResource(R.drawable.bg_white_ripple);
     }
 
 }
