@@ -5,4 +5,37 @@
     tools:context="com.app.gongza.asgzdesign.fragments.HomeFragment">
 
 
+    <com.app.gongza.libs.view.scrollablelayout.ScrollableLayout
+        android:id="@+id/layout_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_head"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/head_height"
+            android:background="#cdcdcd">
+
+            <ImageView
+                android:id="@+id/iv_head"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/ic_launcher" />
+
+        </RelativeLayout>
+
+        <com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip
+            android:id="@+id/tab_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:layout_alignParentBottom="true" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.app.gongza.libs.view.scrollablelayout.ScrollableLayout>
+
 </FrameLayout>

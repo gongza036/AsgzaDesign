@@ -2,7 +2,6 @@ package com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.base
  * Created by cpoopc on 2015/9/15.
  */
 
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 
@@ -11,6 +10,8 @@ import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.ListF
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.RecyclerViewFragment;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.ScrollViewFragment;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.WebViewFragment;
+import com.app.gongza.asgzdesign.fragments.action.NewslatestFragment;
+import com.app.gongza.libs.base.BaseFragment;
 import com.app.gongza.libs.view.scrollablelayout.ScrollableLayout;
 import com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip;
 
@@ -23,16 +24,18 @@ import java.util.List;
  * Time: 10:31
  * Ver.: 0.1
  */
-public abstract class BasePagerFragment extends Fragment {
+public abstract class BasePagerFragment extends BaseFragment {
 
     public void initFragmentPager(ViewPager viewPager, PagerSlidingTabStrip pagerSlidingTabStrip, final ScrollableLayout mScrollLayout) {
         final ArrayList<ScrollAbleFragment> fragmentList = new ArrayList<>();
+        fragmentList.add(NewslatestFragment.newInstance());
         fragmentList.add(ListFragment.newInstance());
         fragmentList.add(ScrollViewFragment.newInstance());
         fragmentList.add(RecyclerViewFragment.newInstance());
         fragmentList.add(WebViewFragment.newInstance());
 
         List<String> titleList = new ArrayList<>();
+        titleList.add("news");
         titleList.add("ListView");
         titleList.add("ScrollView");
         titleList.add("RecyclerView");

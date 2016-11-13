@@ -40,6 +40,7 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
     }
 
     private void initView() {
+//        setStatusBarHide();
         layout_main = (LinearLayout) findViewById(R.id.layout_main);
         layout_home = (LinearLayout) findViewById(R.id.layout_home);
         layout_demo = (LinearLayout) findViewById(R.id.layout_demo);
