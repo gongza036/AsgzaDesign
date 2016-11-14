@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#f06292</color><!-- 状态栏 背景色#3F51B5-->
-    <color name="colorPrimaryDark">#f06292</color><!-- toolbar 背景色#303F9F-->
-    <color name="colorAccent">#f06292</color><!-- 重点  #FF4081-->
+    <color name="colorPrimary">#6699ff</color><!-- 状态栏 背景色#3F51B5-->
+    <color name="colorPrimaryDark">#6699ff</color><!-- toolbar 背景色#303F9F-->
+    <color name="colorAccent">#6699ff</color><!-- 重点  #FF4081-->
 
-    <color name="colorApp">#f06292</color>
+    <color name="colorApp">#6699ff</color>
     <color name="appRed">#c2195d</color>
+    <color name="appRedLight">#f06292</color>
     <color name="appGray">#fafafa</color>
+    <color name="appBlue">#6699ff</color>
+    <color name="appBlueLight">#3366cc</color>
+    <color name="appBlueDark">#003399</color>
+    <color name="blueY">#2fb3ff</color>
+
 
     <color name="background_tab_pressed">#6633B5E5</color><!-- PagerSlidingTabStrip -->
     <color name="c_0">#7B68EE</color>

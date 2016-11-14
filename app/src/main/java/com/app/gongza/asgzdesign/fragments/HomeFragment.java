@@ -2,23 +2,39 @@ package com.app.gongza.asgzdesign.fragments;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.base.BasePagerFragment;
+import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
+import com.app.gongza.libs.tools.okhttp.okhttputils.OkHttpUtils;
+import com.app.gongza.libs.tools.okhttp.okhttputils.callback.StringCallback;
+import com.app.gongza.libs.view.bannerviewpager.BannerViewPager;
+import com.app.gongza.libs.view.bannerviewpager.OnPageClickListener;
+import com.app.gongza.libs.view.bannerviewpager.ViewPagerAdapter;
 import com.app.gongza.libs.view.scrollablelayout.ScrollableLayout;
 import com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip;
+import com.bumptech.glide.Glide;
 import com.nineoldandroids.view.ViewHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.Call;
 
 
 public class HomeFragment extends BasePagerFragment implements View.OnClickListener {
     private ScrollableLayout layout_main;
-    private ImageView iv_head;
+    private BannerViewPager banner;
     private RelativeLayout layout_head;
+    private ViewPagerAdapter bannerAdapter;
+    private List<ImageView> imgList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,9 +50,22 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
     }
 
     private void initView(View view) {
-        ViewPager viewpager_home = (ViewPager) view.findViewById(R.id.viewpager_home);
-        iv_head = (ImageView) view.findViewById(R.id.iv_head);
         layout_head = (RelativeLayout) view.findViewById(R.id.layout_head);
+        //Banner
+        ViewPager viewpager_home = (ViewPager) view.findViewById(R.id.viewpager_home);
+        banner = (BannerViewPager) view.findViewById(R.id.banner);
+        //获取BannerViewPager实例
+        //实例化ViewPagerAdapter，第一个参数是View集合，第二个参数是页面点击监听器
+        bannerAdapter = new ViewPagerAdapter(imgList, new OnPageClickListener() {
+            @Override
+            public void onPageClick(View view, int position) {
+                Log.d("banner", "position:" + position);
+            }
+        });
+        //设置适配器
+        banner.setAdapter(bannerAdapter);
+
+
         // ScrollableLayout
         layout_main = (ScrollableLayout) view.findViewById(R.id.layout_main);
         layout_main.setOnScrollListener(new ScrollableLayout.OnScrollListener() {
@@ -52,25 +81,34 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tab_home);
         initFragmentPager(viewpager_home, pagerSlidingTabStrip, layout_main);
     }
-    
+
     private void initData() {
-//        String url = "http://news-at.zhihu.com/api/4/news/latest";
-//        OkHttpUtils
-//                .get()
-//                .url(url)
-//                .build()
-//                .execute(new StringCallback() {
-//                    @Override
-//                    public void onError(Call call, Exception e, int id) {
-//                        Toast.makeText(getActivity(),"Error=="+e.getMessage(),Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onResponse(String response, int id) {
-////                        Toast.makeText(getActivity(),""+response,Toast.LENGTH_SHORT).show();
-//                        L.json(response);
-//                    }
-//                });
+        String url = "http://news-at.zhihu.com/api/4/news/latest";
+        OkHttpUtils
+                .get()
+                .url(url)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(getActivity(), "Error==" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        NewsLatestBean newsLatestBean = NewsLatestBean.objectFromData(response);
+                        for (int i = 0; i < newsLatestBean.getTop_stories().size(); i++) {
+                            ImageView iv = new ImageView(getActivity());
+                            iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                            Glide.with(getActivity()).
+                                    load(newsLatestBean.getTop_stories().get(i).getImage()).
+                                    asBitmap().//强制处理为bitmap
+                                    into(iv);//显示到目标View中
+                            imgList.add(iv);
+                        }
+                        bannerAdapter.notifyDataSetChanged();
+                    }
+                });
     }
 
     @Override

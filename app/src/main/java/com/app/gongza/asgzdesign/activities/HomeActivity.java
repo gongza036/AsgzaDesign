@@ -92,7 +92,7 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
             case 0:
 //                layout_home.setBackgroundResource(R.drawable.bg_app_ripple);
                 iv_home.setImageResource(R.drawable.ad_home_icon_on);
-                tv_home.setTextColor(0xffc2195d);
+                tv_home.setTextColor(0xff2fb3ff);
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
                     transaction.add(R.id.layout_main, homeFragment);
@@ -103,7 +103,7 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
             case 1:
 //                layout_demo.setBackgroundResource(R.drawable.bg_app_ripple);
                 iv_demo.setImageResource(R.drawable.ad_demo_icon_on);
-                tv_demo.setTextColor(0xffc2195d);
+                tv_demo.setTextColor(0xff2fb3ff);
                 if (demoFragment == null) {
                     demoFragment = new DemoFragment();
                     transaction.add(R.id.layout_main, demoFragment);
@@ -114,7 +114,7 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
             case 2:
 //                layout_other.setBackgroundResource(R.drawable.bg_app_ripple);
                 iv_other.setImageResource(R.drawable.ad_other_icon_on);
-                tv_other.setTextColor(0xffc2195d);
+                tv_other.setTextColor(0xff2fb3ff);
                 if (otherFragment == null) {
                     otherFragment = new OtherFragment();
                     transaction.add(R.id.layout_main, otherFragment);
@@ -125,7 +125,7 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
             case 3:
 //                layout_user.setBackgroundResource(R.drawable.bg_app_ripple);
                 iv_user.setImageResource(R.drawable.ad_user_icon_on);
-                tv_user.setTextColor(0xffc2195d);
+                tv_user.setTextColor(0xff2fb3ff);
                 if (userFragment == null) {
                     userFragment = new UserFragment();
                     transaction.add(R.id.layout_main, userFragment);

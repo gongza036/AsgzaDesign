@@ -21,9 +21,9 @@ import java.util.List;
 
 public class NewslatestRecyclerAdapter extends RecyclerView.Adapter<NewslatestRecyclerAdapter.NewsViewHolder> {
     private Context mContext;
-    private List<NewsLatestBean> mList;
+    private List<NewsLatestBean.StoriesBean> mList;
 
-    public NewslatestRecyclerAdapter(Context mContext, List<NewsLatestBean> mList) {
+    public NewslatestRecyclerAdapter(Context mContext, List<NewsLatestBean.StoriesBean> mList) {
         this.mContext = mContext;
         this.mList = mList;
     }
@@ -47,7 +47,7 @@ public class NewslatestRecyclerAdapter extends RecyclerView.Adapter<NewslatestRe
         View itemView;
         TextView tv_title;
         ImageView iv_images;
-        NewsLatestBean bean;
+        NewsLatestBean.StoriesBean bean;
         int position;
 
         public NewsViewHolder(View itemView) {
@@ -64,7 +64,7 @@ public class NewslatestRecyclerAdapter extends RecyclerView.Adapter<NewslatestRe
             });
         }
 
-        public void bindData(Context mContext,NewsLatestBean bean, int position) {
+        public void bindData(Context mContext,NewsLatestBean.StoriesBean bean, int position) {
             this.position = position;
             this.bean = bean;
             tv_title.setText(bean.getTitle());

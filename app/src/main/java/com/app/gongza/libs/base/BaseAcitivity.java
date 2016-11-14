@@ -37,7 +37,7 @@ public class BaseAcitivity extends AppCompatActivity {
     protected void showSnackbar(String msg) {
         String tMsg = "新Snackbar";
         if (msg != null) tMsg = msg;
-        View rootView = getWindow().getDecorView();
+        View rootView =  getWindow().getDecorView();
         final Snackbar mSnackbar = Snackbar.make(rootView, tMsg, Snackbar.LENGTH_LONG);
         mSnackbar.getView().setBackgroundColor(0xff7f7fbf);
         mSnackbar.getView().setAlpha(0.5f);

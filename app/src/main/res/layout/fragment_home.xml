@@ -17,11 +17,14 @@
             android:layout_height="@dimen/head_height"
             android:background="#cdcdcd">
 
-            <ImageView
-                android:id="@+id/iv_head"
+            <com.app.gongza.libs.view.bannerviewpager.BannerViewPager
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher" />
+                android:foreground="?android:selectableItemBackground"
+                android:layout_height="match_parent">
+
+            </com.app.gongza.libs.view.bannerviewpager.BannerViewPager>
+
 
         </RelativeLayout>
 

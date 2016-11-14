@@ -27,6 +27,7 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.AbsListView;
@@ -97,6 +98,12 @@ public class ScrollableHelper {
                 int firstVisibleItemPosition = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
                 View childAt = recyclerView.getChildAt(0);
                 if (childAt == null || (firstVisibleItemPosition == 0 && childAt.getTop() == 0)) {
+                    return true;
+                }
+            }
+            if (layoutManager instanceof StaggeredGridLayoutManager) {
+                View childAt = recyclerView.getChildAt(0);
+                if (childAt == null || childAt.getTop() == 0) {
                     return true;
                 }
             }
