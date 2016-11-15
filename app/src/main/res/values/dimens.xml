@@ -5,7 +5,7 @@
 
     <!-- DemoScrollablelayoutActivity -->
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="tab_height">30dp</dimen>
+    <dimen name="tab_height">40dp</dimen>
     <dimen name="head_height">200dp</dimen>
     <!-- DemoScrollablelayoutActivity -->
 

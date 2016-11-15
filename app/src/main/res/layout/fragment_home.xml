@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,19 +21,35 @@
             <com.app.gongza.libs.view.bannerviewpager.BannerViewPager
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
-                android:foreground="?android:selectableItemBackground"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:foreground="?android:selectableItemBackground">
 
             </com.app.gongza.libs.view.bannerviewpager.BannerViewPager>
 
 
         </RelativeLayout>
 
-        <com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip
-            android:id="@+id/tab_home"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/tab_height"
-            android:layout_alignParentBottom="true" />
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip
+                android:id="@+id/tab_home"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:layout_alignParentBottom="true"
+                android:textSize="12dp"
+                app:pstsDividerColor="@android:color/transparent"
+                app:pstsIndicatorColor="@color/colorApp"
+                app:pstsIndicatorHeight="2dp"
+                app:pstsTextAllCaps="false"
+                app:pstsUnderlineColor="@color/colorApp"
+                app:pstsUnderlineHeight="1px" />
+
+        </LinearLayout>
+
 
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager_home"
