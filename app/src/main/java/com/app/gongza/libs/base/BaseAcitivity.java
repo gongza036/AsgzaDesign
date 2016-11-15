@@ -1,6 +1,7 @@
 package com.app.gongza.libs.base;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -31,13 +32,20 @@ public class BaseAcitivity extends AppCompatActivity {
         }
     }
 
+    public void setStatusBarColor(int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().setStatusBarColor(color);
+
+        }
+    }
+
     /**
      * Snackbar
      */
     protected void showSnackbar(String msg) {
         String tMsg = "新Snackbar";
         if (msg != null) tMsg = msg;
-        View rootView =  getWindow().getDecorView();
+        View rootView = getWindow().getDecorView();
         final Snackbar mSnackbar = Snackbar.make(rootView, tMsg, Snackbar.LENGTH_LONG);
         mSnackbar.getView().setBackgroundColor(0xff7f7fbf);
         mSnackbar.getView().setAlpha(0.5f);
@@ -46,8 +54,7 @@ public class BaseAcitivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mSnackbar.dismiss();
-                L.json("{\"name\":\"龚正\",\"age\":24}");
-//                KLog.json("{\"name\":\"龚正@@@\",\"age\":24}");
+//                L.json("{\"name\":\"龚正\",\"age\":24}");
             }
         });
     }
