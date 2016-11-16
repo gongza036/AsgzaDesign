@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,7 +23,8 @@ import com.app.gongza.libs.base.BaseAcitivity;
  */
 
 public class HomeActivity extends BaseAcitivity implements View.OnClickListener {
-    private LinearLayout layout_main, layout_home, layout_demo, layout_other, layout_user;
+    private LinearLayout layout_status, layout_main;
+    private LinearLayout layout_home, layout_demo, layout_other, layout_user;
     private TextView tv_home, tv_demo, tv_other, tv_user;
     private ImageView iv_home, iv_demo, iv_other, iv_user;
 
@@ -40,8 +42,10 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
     }
 
     private void initView() {
-//        setStatusBarHide();
-        setStatusBarColor(0xff6699ff);
+        setStatusBarHide();
+//        setStatusBarColor(0xff6699ff);
+        setAppStatus();
+
         layout_main = (LinearLayout) findViewById(R.id.layout_main);
         layout_home = (LinearLayout) findViewById(R.id.layout_home);
         layout_demo = (LinearLayout) findViewById(R.id.layout_demo);
@@ -62,6 +66,14 @@ public class HomeActivity extends BaseAcitivity implements View.OnClickListener 
 
         fragmentManager = getSupportFragmentManager();
         setTabSelection(0);
+    }
+
+    private void setAppStatus() {
+        layout_status = (LinearLayout) findViewById(R.id.layout_status);
+        ViewGroup.LayoutParams layoutParams = layout_status.getLayoutParams();
+        layoutParams.height = getStatusBarHeight();
+        layout_status.setLayoutParams(layoutParams);
+        layout_status.setBackgroundColor(0x446699ff);
     }
 
     @Override

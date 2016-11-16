@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.gongza.asgzdesign.activities.HomeActivity;
-import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
 import com.app.gongza.libs.base.BaseAcitivity;
 import com.app.gongza.libs.tools.okhttp.okhttputils.OkHttpUtils;
 import com.app.gongza.libs.tools.okhttp.okhttputils.callback.StringCallback;
@@ -28,7 +26,8 @@ public class MainActivity extends BaseAcitivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setStatusBarHide();
+        setFullscreen();
+//        setStatusBarHide();
         init();
         getImage();
     }
@@ -42,7 +41,7 @@ public class MainActivity extends BaseAcitivity {
             public void onClick(View v) {
 //                showSnackbar("你好MacGit");
                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
-
+                finish();
             }
         });
     }

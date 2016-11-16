@@ -1,7 +1,6 @@
 package com.app.gongza.libs.base;
 
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -9,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-
-import com.app.gongza.libs.tools.utils.L;
 
 
 public class BaseAcitivity extends AppCompatActivity {
@@ -32,11 +29,33 @@ public class BaseAcitivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 设置系统状态栏颜色
+     */
     public void setStatusBarColor(int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             getWindow().setStatusBarColor(color);
-
         }
+    }
+
+    /**
+     * 获得系统状态栏高度
+     */
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    /**
+     * 设置全屏
+     */
+    public void setFullscreen() {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     /**
