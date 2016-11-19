@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.base.BasePagerFragment;
 import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
+import com.app.gongza.libs.base.BaseApplication;
 import com.app.gongza.libs.tools.okhttp.okhttputils.OkHttpUtils;
 import com.app.gongza.libs.tools.okhttp.okhttputils.callback.StringCallback;
 import com.app.gongza.libs.view.bannerviewpager.BannerViewPager;
@@ -34,7 +35,9 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
     private BannerViewPager banner;
     private RelativeLayout layout_head;
     private ViewPagerAdapter bannerAdapter;
+    private View v_zhanwei;
     private List<ImageView> imgList = new ArrayList<>();
+    private int sbHeight;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,7 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
             @Override
             public void onScroll(int currentY, int maxY) {
                 ViewHelper.setTranslationY(layout_head, (float) (currentY * 0.5));
+                setZheight((int) (currentY * 0.2));
             }
         });
         // 扩展点击头部滑动范围
@@ -80,9 +84,21 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
 //        mScrollLayout.setClickHeadExpand(headHeight + tabHeight);
         PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tab_home);
         initFragmentPager(viewpager_home, pagerSlidingTabStrip, layout_main);
+
+        v_zhanwei = view.findViewById(R.id.v_zhanwei);
+    }
+
+    private void setZheight(int height) {
+        if (height>sbHeight) height=sbHeight;
+        ViewGroup.LayoutParams lp = v_zhanwei.getLayoutParams();
+        lp.height = height;
+        v_zhanwei.setLayoutParams(lp);
     }
 
     private void initData() {
+        BaseApplication app = (BaseApplication) getActivity().getApplication();
+        sbHeight = (int) app.getData().get("sbHeight");
+
         String url = "http://news-at.zhihu.com/api/4/news/latest";
         OkHttpUtils
                 .get()

@@ -6,6 +6,8 @@ import com.app.gongza.libs.tools.okhttp.okhttputils.OkHttpUtils;
 
 import org.litepal.LitePalApplication;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -15,12 +17,19 @@ import okhttp3.OkHttpClient;
  */
 
 public class BaseApplication extends Application {
+    private Map<String, Object> mData;
+
+    public Map<String, Object> getData() {
+        return mData;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
         LitePalApplication.initialize(this);
         okHttp();
+        mData = new HashMap<String, Object>();
     }
 
     private void okHttp() {

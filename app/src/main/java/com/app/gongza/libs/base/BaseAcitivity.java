@@ -12,10 +12,12 @@ import android.view.WindowManager;
 
 public class BaseAcitivity extends AppCompatActivity {
     protected String TAG = getClass().getSimpleName();
+    private BaseApplication application;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        application=(BaseApplication)getApplication();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
@@ -47,6 +49,7 @@ public class BaseAcitivity extends AppCompatActivity {
         if (resourceId > 0) {
             result = getResources().getDimensionPixelSize(resourceId);
         }
+        application.getData().put("sbHeight",result);
         return result;
     }
 

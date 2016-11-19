@@ -31,9 +31,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
             android:orientation="vertical">
 
+            <View
+                android:id="@+id/v_zhanwei"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"></View>
 
             <com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip
                 android:id="@+id/tab_home"
@@ -46,7 +49,8 @@
                 app:pstsIndicatorHeight="2dp"
                 app:pstsTextAllCaps="false"
                 app:pstsUnderlineColor="@color/colorApp"
-                app:pstsUnderlineHeight="1px" />
+                app:pstsUnderlineHeight="1px"
+                android:background="@android:color/white"/>
 
         </LinearLayout>
 
