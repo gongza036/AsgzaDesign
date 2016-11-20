@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
     private RecyclerView rv_news;
     private NewslatestRecyclerAdapter adapter;
     private List<NewsLatestBean.StoriesBean> mList;
+    private String json = null;
 
     public static NewslatestFragment newInstance() {
         NewslatestFragment mNewslatestFragment = new NewslatestFragment();
@@ -39,6 +41,8 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) json = savedInstanceState.getString("json");
+        Log.i("龚正", "json=="+json);
         initData();
     }
 
@@ -69,6 +73,12 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
     }
 
     private void initData() {
+        if (json != null) {
+            NewsLatestBean newsLatestBean = NewsLatestBean.objectFromData(json);
+            mList.addAll(newsLatestBean.getStories());
+            adapter.notifyDataSetChanged();
+            return;
+        }
         String url = "http://news-at.zhihu.com/api/4/news/latest";
         OkHttpUtils
                 .get()
@@ -82,6 +92,7 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
 
                     @Override
                     public void onResponse(String response, int id) {
+                        json = response;
                         NewsLatestBean newsLatestBean = NewsLatestBean.objectFromData(response);
 
                         mList.addAll(newsLatestBean.getStories());
@@ -90,4 +101,10 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
                 });
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        Log.i("龚正", "json00存");
+        outState.putString("json", json);
+        super.onSaveInstanceState(outState);
+    }
 }

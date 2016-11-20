@@ -11,6 +11,9 @@ import com.app.gongza.libs.base.BaseAcitivity;
 import com.app.gongza.libs.tools.okhttp.okhttputils.OkHttpUtils;
 import com.app.gongza.libs.tools.okhttp.okhttputils.callback.StringCallback;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,6 +59,10 @@ public class MainActivity extends BaseAcitivity {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         showSnackbar("Error==" + e.getMessage());
+                        Glide.with(MainActivity.this).
+                                load(R.drawable.af3c66f37f9e31d7815f0b196b5865ec).
+                                crossFade(2000).//淡入淡出
+                                into(iv_first);
                     }
 
                     @Override
@@ -70,7 +77,20 @@ public class MainActivity extends BaseAcitivity {
 
                         Glide.with(MainActivity.this).
                                 load(imgUrl).
-                                into(iv_first);
+                                crossFade(2000).//淡入淡出
+                                into(new GlideDrawableImageViewTarget(iv_first) {
+                            @Override
+                            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
+                                super.onResourceReady(resource, animation);
+                                iv_first.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                        finish();
+                                    }
+                                }, 3000);
+                            }
+                        });
                     }
                 });
 
