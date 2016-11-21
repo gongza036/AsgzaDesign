@@ -11,6 +11,7 @@ import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.Recyc
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.ScrollViewFragment;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.WebViewFragment;
 import com.app.gongza.asgzdesign.fragments.action.NewslatestFragment;
+import com.app.gongza.asgzdesign.unity.beans.NewsThemesBean;
 import com.app.gongza.libs.base.BaseFragment;
 import com.app.gongza.libs.view.scrollablelayout.ScrollableLayout;
 import com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip;
@@ -25,6 +26,8 @@ import java.util.List;
  * Ver.: 0.1
  */
 public abstract class BasePagerFragment extends BaseFragment {
+    private List<String> titleList;
+    private MyFragmentPagerAdapter titleAdapter ;
 
     public void initFragmentPager(ViewPager viewPager, PagerSlidingTabStrip pagerSlidingTabStrip, final ScrollableLayout mScrollLayout) {
         final ArrayList<ScrollAbleFragment> fragmentList = new ArrayList<>();
@@ -34,13 +37,14 @@ public abstract class BasePagerFragment extends BaseFragment {
         fragmentList.add(RecyclerViewFragment.newInstance());
         fragmentList.add(WebViewFragment.newInstance());
 
-        List<String> titleList = new ArrayList<>();
-        titleList.add("news");
-        titleList.add("ListView");
-        titleList.add("ScrollView");
-        titleList.add("RecyclerView");
-        titleList.add("WebView");
-        viewPager.setAdapter(new MyFragmentPagerAdapter(getChildFragmentManager(), fragmentList, titleList));
+//        titleList = new ArrayList<>();
+//        titleList.add("news");
+//        titleList.add("ListView");
+//        titleList.add("ScrollView");
+//        titleList.add("RecyclerView");
+//        titleList.add("WebView");
+        titleAdapter = new MyFragmentPagerAdapter(getChildFragmentManager(), fragmentList, titleList);
+        viewPager.setAdapter(titleAdapter);
         mScrollLayout.getHelper().setCurrentScrollableContainer(fragmentList.get(0));
         pagerSlidingTabStrip.setViewPager(viewPager);
         pagerSlidingTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -62,5 +66,16 @@ public abstract class BasePagerFragment extends BaseFragment {
             }
         });
         viewPager.setCurrentItem(0);
+    }
+
+    public void setTitleList(List<NewsThemesBean.OthersBean> othersList) {
+        if (othersList != null) {
+            titleList=new ArrayList<>();
+            for (NewsThemesBean.OthersBean othersBean : othersList) {
+                String name = othersBean.getName();
+                Log.i("龚正", "othersBean.getName()==" + name);
+                titleList.add(name);
+            }
+        }
     }
 }

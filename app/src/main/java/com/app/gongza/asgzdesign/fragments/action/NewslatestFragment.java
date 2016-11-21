@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +41,6 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) json = savedInstanceState.getString("json");
-        Log.i("龚正", "json=="+json);
         initData();
     }
 
@@ -52,6 +50,17 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
         View view = inflater.inflate(R.layout.fragment_news_lastest, container, false);
         initView(view);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (json != null) {
+            NewsLatestBean newsLatestBean = NewsLatestBean.objectFromData(json);
+            mList.clear();
+            mList.addAll(newsLatestBean.getStories());
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -101,10 +110,4 @@ public class NewslatestFragment extends ScrollAbleFragment implements Scrollable
                 });
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        Log.i("龚正", "json00存");
-        outState.putString("json", json);
-        super.onSaveInstanceState(outState);
-    }
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.base.BasePagerFragment;
 import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
+import com.app.gongza.asgzdesign.unity.beans.NewsThemesBean;
 import com.app.gongza.libs.base.BaseApplication;
 import com.app.gongza.libs.tools.okhttp.okhttputils.OkHttpUtils;
 import com.app.gongza.libs.tools.okhttp.okhttputils.callback.StringCallback;
@@ -32,12 +33,16 @@ import okhttp3.Call;
 
 public class HomeFragment extends BasePagerFragment implements View.OnClickListener {
     private ScrollableLayout layout_main;
+    private ViewPager viewpager_home;
     private BannerViewPager banner;
     private RelativeLayout layout_head;
     private ViewPagerAdapter bannerAdapter;
     private View v_zhanwei;
     private List<ImageView> imgList = new ArrayList<>();
     private int sbHeight;
+
+    private PagerSlidingTabStrip pagerSlidingTabStrip;
+    private List<NewsThemesBean.OthersBean> othersList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,10 +57,14 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
         return view;
     }
 
+
     private void initView(View view) {
+        BaseApplication app = (BaseApplication) getActivity().getApplication();
+        sbHeight = (int) app.getData().get("sbHeight");
+
         layout_head = (RelativeLayout) view.findViewById(R.id.layout_head);
         //Banner
-        ViewPager viewpager_home = (ViewPager) view.findViewById(R.id.viewpager_home);
+        viewpager_home = (ViewPager) view.findViewById(R.id.viewpager_home);
         banner = (BannerViewPager) view.findViewById(R.id.banner);
         //获取BannerViewPager实例
         //实例化ViewPagerAdapter，第一个参数是View集合，第二个参数是页面点击监听器
@@ -82,23 +91,20 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
 //        int headHeight = getResources().getDimensionPixelSize(R.dimen.head_height);
 //        int tabHeight = getResources().getDimensionPixelSize(R.dimen.tab_height);
 //        mScrollLayout.setClickHeadExpand(headHeight + tabHeight);
-        PagerSlidingTabStrip pagerSlidingTabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tab_home);
-        initFragmentPager(viewpager_home, pagerSlidingTabStrip, layout_main);
+        pagerSlidingTabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tab_home);
+//        initFragmentPager(viewpager_home, pagerSlidingTabStrip, layout_main);
 
         v_zhanwei = view.findViewById(R.id.v_zhanwei);
     }
 
     private void setZheight(int height) {
-        if (height>sbHeight) height=sbHeight;
+        if (height > sbHeight) height = sbHeight;
         ViewGroup.LayoutParams lp = v_zhanwei.getLayoutParams();
         lp.height = height;
         v_zhanwei.setLayoutParams(lp);
     }
 
     private void initData() {
-        BaseApplication app = (BaseApplication) getActivity().getApplication();
-        sbHeight = (int) app.getData().get("sbHeight");
-
         String url = "http://news-at.zhihu.com/api/4/news/latest";
         OkHttpUtils
                 .get()
@@ -123,6 +129,27 @@ public class HomeFragment extends BasePagerFragment implements View.OnClickListe
                             imgList.add(iv);
                         }
                         bannerAdapter.notifyDataSetChanged();
+                    }
+                });
+
+        String themesUrl = "http://news-at.zhihu.com/api/4/themes";
+        OkHttpUtils
+                .get()
+                .url(themesUrl)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Toast.makeText(getActivity(), "themes Error==" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        NewsThemesBean newsThemesBean = NewsThemesBean.objectFromData(response);
+                        othersList.addAll(newsThemesBean.getOthers());
+
+                        HomeFragment.this.setTitleList(othersList);
+                        initFragmentPager(viewpager_home, pagerSlidingTabStrip, layout_main);
                     }
                 });
     }
