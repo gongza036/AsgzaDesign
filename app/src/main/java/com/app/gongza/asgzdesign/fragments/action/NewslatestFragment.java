@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.app.gongza.asgzdesign.R;
-import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.base.ScrollAbleFragment;
 import com.app.gongza.asgzdesign.adapters.NewslatestRecyclerAdapter;
 import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
 import com.app.gongza.libs.tools.okhttp.okhttputils.OkHttpUtils;
@@ -26,7 +25,7 @@ import okhttp3.Call;
  * Created by gongza on 2016/11/13.
  */
 
-public class NewslatestFragment extends ScrollAbleFragment implements ScrollableHelper.ScrollableContainer {
+public class NewslatestFragment extends NewsScrollAbleFragment implements ScrollableHelper.ScrollableContainer {
     private RecyclerView rv_news;
     private NewslatestRecyclerAdapter adapter;
     private List<NewsLatestBean.StoriesBean> mList;

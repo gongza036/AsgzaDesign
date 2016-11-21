@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.app.gongza.asgzdesign.R;
-import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.base.BasePagerFragment;
+import com.app.gongza.asgzdesign.fragments.action.NewsBasePagerFragment;
 import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
 import com.app.gongza.asgzdesign.unity.beans.NewsThemesBean;
 import com.app.gongza.libs.base.BaseApplication;
@@ -31,7 +31,7 @@ import java.util.List;
 import okhttp3.Call;
 
 
-public class HomeFragment extends BasePagerFragment implements View.OnClickListener {
+public class HomeFragment extends NewsBasePagerFragment implements View.OnClickListener {
     private ScrollableLayout layout_main;
     private ViewPager viewpager_home;
     private BannerViewPager banner;

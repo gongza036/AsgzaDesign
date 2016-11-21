@@ -10,8 +10,6 @@ import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.ListF
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.RecyclerViewFragment;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.ScrollViewFragment;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.fragment.WebViewFragment;
-import com.app.gongza.asgzdesign.fragments.action.NewslatestFragment;
-import com.app.gongza.asgzdesign.unity.beans.NewsThemesBean;
 import com.app.gongza.libs.base.BaseFragment;
 import com.app.gongza.libs.view.scrollablelayout.ScrollableLayout;
 import com.app.gongza.libs.view.tabstrip.PagerSlidingTabStrip;
@@ -31,18 +29,17 @@ public abstract class BasePagerFragment extends BaseFragment {
 
     public void initFragmentPager(ViewPager viewPager, PagerSlidingTabStrip pagerSlidingTabStrip, final ScrollableLayout mScrollLayout) {
         final ArrayList<ScrollAbleFragment> fragmentList = new ArrayList<>();
-        fragmentList.add(NewslatestFragment.newInstance());
         fragmentList.add(ListFragment.newInstance());
         fragmentList.add(ScrollViewFragment.newInstance());
         fragmentList.add(RecyclerViewFragment.newInstance());
         fragmentList.add(WebViewFragment.newInstance());
 
-//        titleList = new ArrayList<>();
-//        titleList.add("news");
-//        titleList.add("ListView");
-//        titleList.add("ScrollView");
-//        titleList.add("RecyclerView");
-//        titleList.add("WebView");
+        titleList = new ArrayList<>();
+        titleList.add("news");
+        titleList.add("ListView");
+        titleList.add("ScrollView");
+        titleList.add("RecyclerView");
+        titleList.add("WebView");
         titleAdapter = new MyFragmentPagerAdapter(getChildFragmentManager(), fragmentList, titleList);
         viewPager.setAdapter(titleAdapter);
         mScrollLayout.getHelper().setCurrentScrollableContainer(fragmentList.get(0));
@@ -68,14 +65,4 @@ public abstract class BasePagerFragment extends BaseFragment {
         viewPager.setCurrentItem(0);
     }
 
-    public void setTitleList(List<NewsThemesBean.OthersBean> othersList) {
-        if (othersList != null) {
-            titleList=new ArrayList<>();
-            for (NewsThemesBean.OthersBean othersBean : othersList) {
-                String name = othersBean.getName();
-                Log.i("龚正", "othersBean.getName()==" + name);
-                titleList.add(name);
-            }
-        }
-    }
 }
