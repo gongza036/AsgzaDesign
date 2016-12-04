@@ -1,5 +1,6 @@
 package com.app.gongza.asgzdesign.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.asgzdesign.fragments.action.NewsBasePagerFragment;
+import com.app.gongza.asgzdesign.fragments.action.NewsInfoActivity;
 import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
 import com.app.gongza.asgzdesign.unity.beans.NewsThemesBean;
 import com.app.gongza.libs.base.BaseApplication;
@@ -39,6 +41,7 @@ public class HomeFragment extends NewsBasePagerFragment implements View.OnClickL
     private ViewPagerAdapter bannerAdapter;
     private View v_zhanwei;
     private List<ImageView> imgList = new ArrayList<>();
+    private List<NewsLatestBean.TopStoriesBean> topStoriesList = new ArrayList<>();
     private int sbHeight;
 
     private PagerSlidingTabStrip pagerSlidingTabStrip;
@@ -72,6 +75,9 @@ public class HomeFragment extends NewsBasePagerFragment implements View.OnClickL
             @Override
             public void onPageClick(View view, int position) {
                 Log.d("banner", "position:" + position);
+                Intent intent = new Intent(getActivity(), NewsInfoActivity.class);
+                intent.putExtra("newId", topStoriesList.get(position).getId());
+                getActivity().startActivity(intent);
             }
         });
         //设置适配器
@@ -120,6 +126,7 @@ public class HomeFragment extends NewsBasePagerFragment implements View.OnClickL
                     public void onResponse(String response, int id) {
                         NewsLatestBean newsLatestBean = NewsLatestBean.objectFromData(response);
                         for (int i = 0; i < newsLatestBean.getTop_stories().size(); i++) {
+                            topStoriesList.add(newsLatestBean.getTop_stories().get(i));
                             ImageView iv = new ImageView(getActivity());
                             iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
                             Glide.with(getActivity()).

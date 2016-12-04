@@ -1,15 +1,16 @@
 package com.app.gongza.asgzdesign.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.gongza.asgzdesign.R;
+import com.app.gongza.asgzdesign.fragments.action.NewsInfoActivity;
 import com.app.gongza.asgzdesign.unity.beans.NewsLatestBean;
 import com.bumptech.glide.Glide;
 
@@ -35,7 +36,7 @@ public class NewslatestRecyclerAdapter extends RecyclerView.Adapter<NewslatestRe
 
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
-        holder.bindData(mContext,mList.get(position), position);
+        holder.bindData(mContext, mList.get(position), position);
     }
 
     @Override
@@ -59,12 +60,14 @@ public class NewslatestRecyclerAdapter extends RecyclerView.Adapter<NewslatestRe
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "title==" + bean.getTitle(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(), NewsInfoActivity.class);
+                    intent.putExtra("newId", bean.getId());
+                    v.getContext().startActivity(intent);
                 }
             });
         }
 
-        public void bindData(Context mContext,NewsLatestBean.StoriesBean bean, int position) {
+        public void bindData(Context mContext, NewsLatestBean.StoriesBean bean, int position) {
             this.position = position;
             this.bean = bean;
             tv_title.setText(bean.getTitle());

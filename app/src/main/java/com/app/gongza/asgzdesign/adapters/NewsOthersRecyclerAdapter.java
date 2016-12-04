@@ -1,15 +1,16 @@
 package com.app.gongza.asgzdesign.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.gongza.asgzdesign.R;
+import com.app.gongza.asgzdesign.fragments.action.NewsInfoActivity;
 import com.app.gongza.asgzdesign.unity.beans.NewsOthersBean;
 import com.bumptech.glide.Glide;
 
@@ -59,7 +60,9 @@ public class NewsOthersRecyclerAdapter extends RecyclerView.Adapter<NewsOthersRe
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "title==" + bean.getTitle(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(), NewsInfoActivity.class);
+                    intent.putExtra("newId", bean.getId());
+                    v.getContext().startActivity(intent);
                 }
             });
         }

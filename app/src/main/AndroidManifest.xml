@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.gongza.asgzdesign">
+          package="com.app.gongza.asgzdesign">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name="com.app.gongza.libs.base.BaseApplication"
@@ -15,17 +15,18 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.TestActivity" />
-        <activity android:name=".activities.demo.DemoEncryptAesActivity" />
-        <activity android:name=".activities.demo.DemoLitepalActivity" />
-        <activity android:name=".activities.demo.DemoBlurActivity" />
+        <activity android:name=".activities.HomeActivity"/>
+        <activity android:name=".activities.TestActivity"/>
+        <activity android:name=".activities.demo.DemoEncryptAesActivity"/>
+        <activity android:name=".activities.demo.DemoLitepalActivity"/>
+        <activity android:name=".activities.demo.DemoBlurActivity"/>
         <activity android:name=".activities.demo.scrollablelayout.DemoScrollablelayoutActivity"></activity>
+        <activity android:name=".fragments.action.NewsInfoActivity"></activity>
     </application>
 
 </manifest>
