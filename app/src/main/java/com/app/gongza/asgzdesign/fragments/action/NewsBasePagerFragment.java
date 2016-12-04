@@ -14,6 +14,22 @@ import java.util.List;
 public abstract class NewsBasePagerFragment extends BaseFragment {
     private List<String> titleList;
     private NewsFragmentPagerAdapter titleAdapter;
+    private List<NewsThemesBean.OthersBean> othersList;
+
+    public void setTitleList(List<NewsThemesBean.OthersBean> mOthersList) {
+        titleList = new ArrayList<>();
+        titleList.add("新闻");
+        othersList = new ArrayList<>();
+        if (mOthersList != null) {
+            Log.i("龚正", "othersList.size()==" + mOthersList.size());
+            for (NewsThemesBean.OthersBean othersBean : mOthersList) {
+                othersList.add(othersBean);
+                String name = othersBean.getName();
+                Log.i("龚正", "othersBean.getName()==" + name);
+                titleList.add(name);
+            }
+        }
+    }
 
     public void initFragmentPager(ViewPager viewPager, PagerSlidingTabStrip pagerSlidingTabStrip, final ScrollableLayout mScrollLayout) {
         final ArrayList<NewsScrollAbleFragment> fragmentList = new ArrayList<>();
@@ -24,11 +40,17 @@ public abstract class NewsBasePagerFragment extends BaseFragment {
 //        fragmentList.add(WebViewFragment.newInstance());
 
 //        titleList = new ArrayList<>();
-//        titleList.add("news");
+//        titleList.add("新闻");
 //        titleList.add("ListView");
 //        titleList.add("ScrollView");
 //        titleList.add("RecyclerView");
 //        titleList.add("WebView");
+
+
+        for (int i = 1; i < titleList.size(); i++) {
+            fragmentList.add(NewsOthersFragment.newInstance(othersList.get(i - 1).getId()));
+        }
+
         titleAdapter = new NewsFragmentPagerAdapter(getChildFragmentManager(), fragmentList, titleList);
         viewPager.setAdapter(titleAdapter);
         mScrollLayout.getHelper().setCurrentScrollableContainer(fragmentList.get(0));
@@ -54,14 +76,4 @@ public abstract class NewsBasePagerFragment extends BaseFragment {
         viewPager.setCurrentItem(0);
     }
 
-    public void setTitleList(List<NewsThemesBean.OthersBean> othersList) {
-        if (othersList != null) {
-            titleList = new ArrayList<>();
-            for (NewsThemesBean.OthersBean othersBean : othersList) {
-                String name = othersBean.getName();
-                Log.i("龚正", "othersBean.getName()==" + name);
-                titleList.add(name);
-            }
-        }
-    }
 }
