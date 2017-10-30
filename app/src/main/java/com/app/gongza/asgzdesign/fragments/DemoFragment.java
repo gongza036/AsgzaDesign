@@ -13,9 +13,10 @@ import com.app.gongza.asgzdesign.activities.demo.DemoEncryptAesActivity;
 import com.app.gongza.asgzdesign.activities.demo.DemoLitepalActivity;
 import com.app.gongza.asgzdesign.activities.demo.scrollablelayout.DemoScrollablelayoutActivity;
 import com.app.gongza.libs.base.BaseFragment;
+import com.app.gongza.mogu.MoguActivity;
 
 public class DemoFragment extends BaseFragment implements View.OnClickListener {
-    private Button bt_aes, bt_blur, bt_litepal,bt_scrollablelayout;
+    private Button bt_aes, bt_blur, bt_litepal,bt_scrollablelayout,bt_mogu;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class DemoFragment extends BaseFragment implements View.OnClickListener {
         bt_litepal.setOnClickListener(this);
         bt_scrollablelayout = (Button) view.findViewById(R.id.bt_scrollablelayout);
         bt_scrollablelayout.setOnClickListener(this);
+        bt_mogu = (Button) view.findViewById(R.id.bt_mogu);
+        bt_mogu.setOnClickListener(this);
     }
 
     @Override
@@ -49,6 +52,9 @@ public class DemoFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.bt_scrollablelayout:
                 startActivity(new Intent(getActivity(), DemoScrollablelayoutActivity.class));
+                break;
+            case R.id.bt_mogu:
+                startActivity(new Intent(getActivity(), MoguActivity.class));
                 break;
             default:
                 break;

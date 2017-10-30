@@ -27,6 +27,7 @@
         <activity android:name=".activities.demo.DemoBlurActivity"/>
         <activity android:name=".activities.demo.scrollablelayout.DemoScrollablelayoutActivity"></activity>
         <activity android:name=".fragments.action.NewsInfoActivity"></activity>
+        <activity android:name="com.app.gongza.mogu.MoguActivity"></activity>
     </application>
 
 </manifest>

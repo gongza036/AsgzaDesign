@@ -7,6 +7,8 @@ import android.widget.TextView;
 import com.app.gongza.asgzdesign.R;
 import com.app.gongza.libs.base.BaseAcitivity;
 
+import java.util.concurrent.Callable;
+
 /**
  * Created by gongza on 2016/10/22.
  */

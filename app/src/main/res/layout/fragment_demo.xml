@@ -9,23 +9,33 @@
         android:id="@+id/bt_aes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AES_demo" />
+        android:text="AES_demo"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/bt_blur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blur_demo" />
+        android:text="Blur_demo"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/bt_litepal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Litepal_demo" />
+        android:text="Litepal_demo"
+        android:visibility="gone"/>
     <Button
         android:id="@+id/bt_scrollablelayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="scrollablelayout_demo" />
+        android:text="scrollablelayout_demo"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/bt_mogu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mogu_demo"
+        android:visibility="gone"/>
 
 </LinearLayout>
